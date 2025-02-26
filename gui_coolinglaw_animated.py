@@ -74,6 +74,11 @@ Then specify a final time to predict the object's temperature at that moment."""
         self.result_label = QLabel("Temperature at final time: ", self)
         left_panel.addWidget(self.result_label)
 
+        self.result2_label = QLabel("Cooling constant: ", self)
+        left_panel.addWidget(self.result2_label)
+
+
+
         # Right panel - Animation
         self.figure, self.ax = plt.subplots(figsize=(6, 4))
         self.canvas = FigureCanvas(self.figure)
@@ -119,7 +124,12 @@ Then specify a final time to predict the object's temperature at that moment."""
             )
             final_temp = self.newton_cooling_function(final_time)
 
+            initial_deviation = first_temperature - environment_temperature 
+            cooling_ration = (second_temperature - environment_temperature) / initial_deviation 
+            cooling_constant = -np.log(cooling_ration) / (second_time - first_time)
+
             self.result_label.setText(f"Temperature at final time: {final_temp:.2f}")
+            self.result2_label.setText(f"Cooling constant: {cooling_constant:.2f}")
 
             # Stop the previous animation (if any) before starting a new one
             if self.ani is not None:
