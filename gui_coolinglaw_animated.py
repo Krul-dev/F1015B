@@ -9,10 +9,10 @@ Description:
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-from PyQt6.QtWidgets import (
+from PyQt5.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox, QHBoxLayout, QFormLayout, QFrame
 )
-from PyQt6.QtGui import QDoubleValidator
+from PyQt5.QtGui import QDoubleValidator
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.animation import FuncAnimation
 
